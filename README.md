@@ -50,7 +50,7 @@ This project is a **secure authentication system** built with **Node.js, Express
 ## ⚙️ Installation & Setup
 **1. Clone the Repository**
 ```bash
-git clone https://github.com/your-repo/auth-system.git
+git clone https://github.com/your-repo/Auth-System.git
 cd auth-system
 ```
 **2. Install Dependencies**
