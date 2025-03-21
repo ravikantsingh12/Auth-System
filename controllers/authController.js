@@ -60,8 +60,14 @@ const loginUser = async (req, res) => {
     let clientIP = req.headers["x-forwarded-for"] || req.socket.remoteAddress || req.ip;
     if (clientIP === "::1" || clientIP === "::ffff:127.0.0.1") clientIP = "127.0.0.1"; 
 
+    const splitedClientIp = clientIP.split(", ");
+    clientIP = splitedClientIp[0];
+
+    const userIp = user.ipAddress.split(", ");
+    const userIpAddress = userIp[0];
+
     // Check if the IP address matches the stored one
-    if (clientIP !== user.ipAddress) {
+    if (clientIP !== userIpAddress) {
       req.app.get("io").emit("alert", {
         message: "Login attempted from unauthorized IP. You will be redirected to the registration page in 30 seconds."
       });
